@@ -1,0 +1,16 @@
+How to run this program!!! 
+
+Compile all Java files: javac Router.java Server.java Client.java.
+Start the server: java Server.
+Start the router: java Router.
+Start the client: java Client.
+
+
+Process for the txt.file!!!
+The client will send the specified file (file_to_send.txt) to the server via the router. 
+The server will receive the file, (received_file.txt), and send a response back. 
+
+
+Process for the Sound Wave File!!!
+The server will send the specified sound file (sound_file.wav) to the client via the router. 
+The client will receive the sound file and save it as received_sound.wav.
