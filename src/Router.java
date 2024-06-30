@@ -28,11 +28,11 @@ class RouterThread extends Thread {
     public void run() {
         try (Socket serverSocket = new Socket("localhost", 6000);
              DataInputStream clientIn = new DataInputStream(clientSocket.getInputStream());
-             DataOutputStream serverOut = new DataOutputStream(serverSocket.getOutputStream());
+             DataOutputStream clientOut = new DataOutputStream(clientSocket.getOutputStream());
              DataInputStream serverIn = new DataInputStream(serverSocket.getInputStream());
-             DataOutputStream clientOut = new DataOutputStream(clientSocket.getOutputStream())) {
+             DataOutputStream serverOut = new DataOutputStream(serverSocket.getOutputStream())) {
 
-            //////////////////// Txt.files ////////////////
+            //________________________________________Transmition of Text.Files_________________//
             // Receive file from client
             int fileSize = clientIn.readInt();
             byte[] fileBytes = new byte[fileSize];
@@ -41,15 +41,17 @@ class RouterThread extends Thread {
             // Forward file to server
             serverOut.writeInt(fileSize);
             serverOut.write(fileBytes);
-
+            System.out.println("Router sent sound file to Server.");
             // Receive response from server
             String serverResponse = serverIn.readUTF();
             System.out.println("Router received response from Server: " + serverResponse);
 
             // Send response back to client
             clientOut.writeUTF(serverResponse);
+            //Stop_____________________________________!!
 
-            /////////////////////////////////////// Sound Files ////////////////////
+            
+            //Start_____________________________________Transmitiong of Sound.Wave___________________________//
             // Receive sound file from server
             int soundfileSize = serverIn.readInt();
             byte[] soundData = new byte[soundfileSize];
@@ -59,7 +61,7 @@ class RouterThread extends Thread {
             clientOut.writeInt(soundfileSize);
             clientOut.write(soundData);
             System.out.println("Router sent sound file to client.");
-            ////////////////////////////////////////////////////////
+            //Stop____________________________________________________________________________________________!!
 
         } catch (IOException e) {
             System.err.println("Error in router thread: " + e.getMessage());

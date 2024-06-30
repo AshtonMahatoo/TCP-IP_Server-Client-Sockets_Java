@@ -36,7 +36,7 @@ class ServerThread extends Thread {
             in.readFully(fileBytes);
 
             // Process file (e.g., save to disk)
-            saveFile(fileBytes, "Received_Run_Instructions_file.txt");
+            saveFile(fileBytes, "Recieved-testFile.txt");
 
             // Send response to router
             out.writeUTF("File received successfully!");

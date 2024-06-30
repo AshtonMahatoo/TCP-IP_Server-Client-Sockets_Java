@@ -10,7 +10,7 @@ public class Client {
              DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
             //////////////////// Sends txt.file to router
-            byte[] fileData = readFile("Run_Instructions.txt");
+            byte[] fileData = readFile("C:\\Users\\Ashton Mahatoo\\OneDrive\\Desktop\\TCP-IP_Server-Client-Sockets_Java\\src\\testFile.txt");
             out.writeInt(fileData.length);
             out.write(fileData);
             System.out.println("Client sent file to router.");
@@ -28,7 +28,7 @@ public class Client {
 
             // Save sound file received from server sound file
             saveSoundFile(soundData, "received_cheer_and_applause_sound.wav");
-            System.out.println("Client received sound file from server via router.");
+            System.out.println("Client received Sound Wave from server via router.");
 
 
 
